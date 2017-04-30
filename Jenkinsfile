@@ -1,9 +1,14 @@
+#!groovy​
+
 pipeline {
   agent any
   stages {
     stage('build') {
-      steps {
-        sh 'gradlew clean build'
+      node {
+        timeout(time: 15, unit: 'MINUTES') {
+          checkout scm
+          sh 'gradlew clean build'
+        }
       }
     }
     stage('Test') {
