@@ -28,14 +28,15 @@ dependencies {
 }
 
 tasks.withType(Test) {
+  maxParallelForks = Runtime.runtime.availableProcessors() - 1
+
   testLogging {
     // set options for log level LIFECYCLE
-    events "passed", "skipped", "failed", "standardOut"
-    showExceptions true
-    exceptionFormat "full"
-    showCauses true
-    showStackTraces true
-    maxParallelForks = Runtime.runtime.availableProcessors() - 1
+    events "passed", "skipped", "failed"
+//    showExceptions true
+//    exceptionFormat "full"
+//    showCauses true
+//    showStackTraces true
 
     // set options for log level DEBUG and INFO
     debug {
