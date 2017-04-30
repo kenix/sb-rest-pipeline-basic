@@ -15,9 +15,19 @@ pipeline {
         echo 'Testing'
       }
     }
-    stage('Deploy') {
+    stage('Deploy - staging') {
       steps {
-        echo 'Deploying'
+        echo 'Deploy to staging'
+      }
+    }
+    stage('Sanity check') {
+      steps {
+        input "Does the staging environment look ok?"
+      }
+    }
+    stage('Deploy - Production') {
+      steps {
+        echo 'Deploy to production'
       }
     }
   }
