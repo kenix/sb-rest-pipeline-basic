@@ -6,7 +6,6 @@ pipeline {
     stage('Build') {
       steps {
         timeout(time: 10, unit: 'MINUTES') {
-          checkout scm
           sh 'gradlew clean build'
         }
       }
