@@ -3,9 +3,9 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('Build') {
       steps {
-        timeout(time: 15, unit: 'MINUTES') {
+        timeout(time: 10, unit: 'MINUTES') {
           checkout scm
           sh 'gradlew clean build'
         }
@@ -13,16 +13,18 @@ pipeline {
     }
     stage('Test') {
       steps {
-        timeout(time: 15, unit: 'MINUTES') {
-          sh 'echo "run test script here"'
-        }
+        echo 'Testing'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying'
       }
     }
   }
   post {
     always {
       echo 'This will always run'
-      archive 'build/libs/**/*.jar'
       junit 'build/test-results/**/*.xml'
     }
     success {
