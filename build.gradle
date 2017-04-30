@@ -28,6 +28,11 @@ dependencies {
 }
 
 tasks.withType(Test) {
+  reports {
+    junitXml.enabled = true
+    html.enabled = true
+  }
+
   maxParallelForks = Runtime.runtime.availableProcessors() - 1
 
   testLogging {

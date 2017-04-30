@@ -23,7 +23,7 @@ pipeline {
     always {
       echo 'This will always run'
       archive 'build/libs/**/*.jar'
-      junit 'build/reports/**/*.xml'
+      junit 'build/test-results/**/*.xml'
     }
     success {
       echo 'This will run only if successful'
