@@ -28,5 +28,4 @@ public class DemoApplicationTests {
         .andExpect(status().isOk())
         .andExpect(content().string(containsString("hello")));
   }
-
 }
